@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="donuts">
+<head>
+  <title>Donuts</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    
+    <h1>Donuts</h1>
+
+    <section ng-controller="BatterCtrl">
+      <h3 class="text-center">
+        Batters<br>
+        <button ng-click="toggleBatterID()" class="btn btn-default btn-xs">Hide Batter ID</button>
+      </h3>
+      <table class="table text-center">
+        <tr>
+          <th ng-hide="hideBatterID">Batter ID</th>
+          <th>Batter Type</th>
+        </tr>
+        <tr ng-click="toggleBatterID()" ng-repeat="batter in batters">
+          <td ng-hide="hideBatterID">{{ batter.id }}</td>
+          <td>{{ batter.type }}</td>
+        </tr>
+      </table>      
+    </section>
+
+    <section ng-controller="ToppingCtrl">
+      <h3 class="text-center">
+        Toppings<br>
+        <button ng-click="toggleToppingID()" class="btn btn-default btn-xs">Hide Topping ID</button>
+      </h3>
+      <table class="table text-center">
+        <tr>
+          <th ng-hide="hideToppingID">Topping ID</th>
+          <th>Topping Type</th>
+        </tr>
+        <tr ng-repeat="topping in toppings">
+          <td ng-hide="hideToppingID">{{ topping.id }}</td>
+          <td>{{ topping.type }}</td>
+        </tr> 
+      </table>      
+    </section>
+
+  </div>
+</div>
+
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/services/topping_service.js"></script>
+  <script type="text/javascript" src="js/services/batter_service.js"></script>
+  <script type="text/javascript" src="js/controllers/batter_controller.js"></script>
+  <script type="text/javascript" src="js/controllers/topping_controller.js"></script>
+</body>
+</html>
